@@ -1,0 +1,9 @@
+.moviePlayer {
+  margin-top: 8rem;
+  width: 100%;
+  height: calc(100vh - 8rem);
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}

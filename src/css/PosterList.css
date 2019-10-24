@@ -1,0 +1,21 @@
+.posterList {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+.posterList--title {
+  font-size: 2.5rem;
+  color: #1c1c1c;
+  font-weight: bold;
+  margin-top: 3rem;
+  text-align: center;
+  /* border-bottom: 3px solid #901818;
+  width: 25%; */
+}
+.posterList--grid {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding: 2vw;
+}

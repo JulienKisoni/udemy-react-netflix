@@ -1,0 +1,51 @@
+.mvPlayerListItem {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  cursor: pointer;
+  font-size: 1.5rem;
+  font-family: "28 Days Later";
+  height: 7rem;
+}
+.active {
+  border-left: 1rem solid #901818;
+}
+
+.mvPlayerListItem:hover {
+  background: #549092;
+}
+.mvPlayerListItem--divider {
+  width: 100%;
+  height: 0.2rem;
+  border-radius: 0.8rem;
+  margin: 0 auto;
+  background: #ffffff9e;
+}
+.mvPlayerListItem--number {
+  flex-grow: 1;
+  width: 0.3rem;
+  padding-right: 1rem;
+  border-right: 2px solid #565656;
+}
+.mvPlayerListItem--title {
+  flex-grow: 10;
+  padding-left: 1rem;
+  text-align: left;
+}
+.mvPlayerListItem--time {
+  margin-left: 0.5rem;
+  text-align: center;
+  background: #d8a860;
+  width: 4.5rem;
+  height: 2rem;
+  border-radius: 0.5rem;
+  padding: 0.2rem 0.2rem;
+  padding-bottom: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.3rem !important;
+}

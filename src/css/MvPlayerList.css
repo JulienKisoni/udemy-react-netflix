@@ -1,0 +1,63 @@
+.mvPlayerList {
+  position: relative;
+  width: 30%;
+  height: calc(100vh - 8rem);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  color: white;
+}
+.mvPlayerList--header {
+  position: absolute;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 2rem;
+  background: #549092;
+  margin-bottom: 2rem;
+  height: 8rem;
+  /* width: calc(100% - 4rem); */
+  width: 100%;
+}
+.mvPlayerList--header h3 {
+  font-size: 1.7rem;
+}
+.mvPlayerList--badge {
+  background: #901818;
+  height: 2rem;
+  width: 3rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0.2rem 0.5rem;
+  border-radius: 0.5rem;
+  font-weight: bold;
+  font-size: 1.5rem;
+}
+.mvPlayerList--list {
+  overflow-y: auto;
+  height: calc(100% - 8rem);
+  margin-top: 8rem;
+  background: #010517db;
+}
+/* width */
+.mvPlayerList--list::-webkit-scrollbar {
+  width: 5px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 2px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}

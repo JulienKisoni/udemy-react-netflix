@@ -1,0 +1,37 @@
+.headerImg {
+  margin-top: 8rem;
+  width: 100%;
+  height: 75rem;
+  background-size: 100%, cover !important;
+  background-position: center, center !important;
+  position: relative;
+  /* background-position: center, center !important; */
+}
+.headerImg--overlay {
+  position: absolute;
+  background: rgba(0, 0, 0, 0.3);
+  color: white;
+  top: 25rem;
+  width: 40%;
+  /* height: 45%; */
+  height: auto;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+}
+.headerImg--overlay__title {
+  font-size: 3.5rem;
+  font-weight: bold;
+  padding-bottom: 0.5rem;
+  border-bottom: 0.7rem solid #d8a860;
+  align-self: flex-start;
+}
+.headerImg--overlay__desc {
+  font-size: 2.3rem;
+  text-align: justify;
+  line-height: 2.3rem;
+  font-weight: 100;
+  padding-top: 2rem;
+}

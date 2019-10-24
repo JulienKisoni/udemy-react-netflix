@@ -1,0 +1,21 @@
+.loadButton {
+  margin: 0 auto;
+  margin-bottom: 3.5rem;
+  border: 3px solid #781818;
+  background: #901818;
+  width: 87vw;
+  height: 5rem;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  border-radius: 0.5rem;
+}
+.loadButton--text {
+  font-size: 2rem;
+  font-weight: 500;
+}
+.loadButton:hover {
+  opacity: 0.9;
+}

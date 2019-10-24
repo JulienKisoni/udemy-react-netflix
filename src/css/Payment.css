@@ -1,0 +1,30 @@
+.payment {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 8rem;
+  height: calc(100vh - 8rem);
+  width: 100vw;
+}
+.payment--button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.payment--body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.payment--card {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 45rem;
+  height: auto;
+}
+.payment--text {
+  font-size: 2.5rem;
+  text-align: center;
+}

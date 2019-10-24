@@ -1,0 +1,9 @@
+.login {
+    margin-top: 9rem;
+    display: flex;
+    width: 100vw;
+    height: calc(100vh - 9rem);
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
