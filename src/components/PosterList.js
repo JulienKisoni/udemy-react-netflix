@@ -14,7 +14,6 @@ class PosterList extends Component {
                 <Poster 
                     key={movie.id}
                     imgSrc={imgSrc}
-                    hover={false}
                     whished={wish}
                     movie={movie}
                     mTitle={movie.title}
