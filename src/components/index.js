@@ -13,3 +13,4 @@ export * from './HeaderDetails';
 export * from './VideoPlayer';
 export * from './MvPlayerList';
 export * from './MvPlayerListItem';
+export * from './Paypal';

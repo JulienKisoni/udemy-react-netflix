@@ -3,6 +3,8 @@ import firebase from 'firebase';
 import { Alert } from 'reactstrap';
 import StyledFirebaseAuth from 'react-firebaseui/StyledFirebaseAuth';
 
+import { NETFLIX_APP_LOGGEDIN } from '../utils/helpers';
+
 import '../css/Login.css';
 
 // Configure FirebaseUI.
@@ -16,9 +18,16 @@ const uiConfig = {
       firebase.auth.GoogleAuthProvider.PROVIDER_ID,
       firebase.auth.FacebookAuthProvider.PROVIDER_ID,
       firebase.auth.TwitterAuthProvider.PROVIDER_ID,
-      firebase.auth.GithubkAuthProvider.PROVIDER_ID,
+      firebase.auth.GithubAuthProvider.PROVIDER_ID,
       firebase.auth.EmailAuthProvider.PROVIDER_ID,
-    ]
+    ], 
+    callbacks: {
+        signInSuccessWithAuthResult : () => {
+            console.log('connexion reussie');
+            localStorage.setItem(NETFLIX_APP_LOGGEDIN, true);
+            return true;
+        }
+    }
   };
 
 

@@ -3,9 +3,20 @@ import { connect } from 'react-redux';
 
 import { HeaderImg, Searchbar, PosterList, LoadButton } from '../components';
 import { getMovies } from '../actions/movie';
+
+import { renderLogin } from '../utils/helpers';
+
+const flag = renderLogin();
   
 class HomeComponent extends Component {
+    state = {
+        flag: flag
+    }
     componentDidMount() {
+        if(!this.state.flag) {
+            this.props.history.push({ pathname: '/login'});
+            return;
+        }
         this.props.getMovies();
     }
     render() {

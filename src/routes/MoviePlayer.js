@@ -8,63 +8,24 @@ import { calcTime } from '../utils/helpers';
 
 import '../css/MoviePlayer.css';
 
+import { renderLogin } from '../utils/helpers';
+
+const flag = renderLogin();
+
 let newMovies = [];
 
 class MoviePlayer extends Component {
     state = {
-        movies : [
-            {
-            duration: "2h 9m",
-            id: 429617,
-            imageUrl: "http://image.tmdb.org/t/p/w1280//5myQbDzw3l8K9yofUXRJ4UTVgam.jpg",
-            position: 1,
-            title: "Spider-Man : Far from home",
-            videoUrl: "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4"
-            },
-            {
-             duration: "2h 9m",
-             id: 429618,
-             imageUrl: "http://image.tmdb.org/t/p/w1280//5myQbDzw3l8K9yofUXRJ4UTVgam.jpg",
-             position: 1,
-             title: "Spider-Man : Far from home",
-             videoUrl: "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4"
-             },
-             {
-                 duration: "2h 9m",
-                 id: 429616,
-                 imageUrl: "http://image.tmdb.org/t/p/w1280//5myQbDzw3l8K9yofUXRJ4UTVgam.jpg",
-                 position: 1,
-                 title: "Spider-Man : Far from home",
-                 videoUrl: "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4"
-                 },
-                 {
-                     duration: "2h 9m",
-                     id: 429612,
-                     imageUrl: "http://image.tmdb.org/t/p/w1280//5myQbDzw3l8K9yofUXRJ4UTVgam.jpg",
-                     position: 1,
-                     title: "Spider-Man : Far from home",
-                     videoUrl: "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4"
-                     },
-                     {
-                         duration: "2h 9m",
-                         id: 429610,
-                         imageUrl: "http://image.tmdb.org/t/p/w1280//5myQbDzw3l8K9yofUXRJ4UTVgam.jpg",
-                         position: 1,
-                         title: "Spider-Man : Far from home",
-                         videoUrl: "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4"
-                         },
-         ],
-        selectedMovie: {
-            duration: "2h 9m",
-           id: 429617,
-           imageUrl: "http://image.tmdb.org/t/p/w1280//5myQbDzw3l8K9yofUXRJ4UTVgam.jpg",
-           position: 1,
-           title: "Spider-Man : Far from home",
-           videoUrl: "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4"
-        },
-        loading: true
+        movies : [],
+        selectedMovie: {},
+        loading: true,
+        flag: flag
     }
     async componentDidMount() {
+        if(!this.state.flag) {
+            this.props.history.push({ pathname: '/login'});
+            return;
+        }
         const oldMovies = JSON.parse(localStorage.getItem('movies'));
         const results = await this.getNewMovies(oldMovies);
         newMovies = oldMovies.map((oldMovie, index) => {
