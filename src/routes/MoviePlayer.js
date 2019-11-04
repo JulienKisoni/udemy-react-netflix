@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import _ from 'lodash';
+import firebase from 'firebase';
 
 import { VideoPlayer, MvPlayerList, Spinner } from '../components/';
 import { API_KEY, API_URL, IMAGE_BASE_URL, BACKDROP_SIZE } from '../config';
@@ -26,39 +27,65 @@ class MoviePlayer extends Component {
             this.props.history.push({ pathname: '/login'});
             return;
         }
-        const oldMovies = JSON.parse(localStorage.getItem('movies'));
-        const results = await this.getNewMovies(oldMovies);
-        newMovies = oldMovies.map((oldMovie, index) => {
-            return {
-                id: oldMovie.id,
-                position: index +1,
-                title: oldMovie.title,
-                duration: results[index],
-                imageUrl: `${IMAGE_BASE_URL}/${BACKDROP_SIZE}/${oldMovie.backdrop_path}`,
-                videoUrl: "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4"
+        setTimeout(() => {
+            const user = firebase.auth().currentUser;
+            let dbRef;
+            if(user) {
+                dbRef = firebase.database().ref(`users/${user.uid}`)
+                dbRef.on('value', async snapshot => {
+                    const data = snapshot.val();
+                    console.log('data', data);
+                    if(data) {
+                        const targetDate = data.validUntil;
+                        const now = new Date().getTime();
+                        if(targetDate > now) {
+                            console.log('abonnement valide');
+                            // 
+                            const oldMovies = JSON.parse(localStorage.getItem('movies'));
+                            const results = await this.getNewMovies(oldMovies);
+                            newMovies = oldMovies.map((oldMovie, index) => {
+                                return {
+                                    id: oldMovie.id,
+                                    position: index +1,
+                                    title: oldMovie.title,
+                                    duration: results[index],
+                                    imageUrl: `${IMAGE_BASE_URL}/${BACKDROP_SIZE}/${oldMovie.backdrop_path}`,
+                                    videoUrl: "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4"
+                                }
+                            })
+
+                            const id = this.props.match.params.id;
+
+                            if (id) {
+                                const selectedMovie = this.getSelectedMovie(newMovies, id);
+                                this.setState({
+                                    loading: false,
+                                    movies: [...newMovies],
+                                    selectedMovie
+                                })
+                            } else {
+                                const selectedMovie = newMovies[0];
+                                this.setState({
+                                    loading: false,
+                                    movies: [...newMovies],
+                                    selectedMovie
+                                })
+                                this.props.history.push({
+                                    pathname: `/player/${selectedMovie.id}`
+                                })
+                            }
+                        } else {
+                            this.props.history.push({ pathname: '/payment'});
+                        }
+                    } else {
+                        this.props.history.push({ pathname: '/payment'});
+                    }
+                })
+            } else {
+                this.props.history.push({ pathname: '/login'});
             }
-        })
-
-        const id = this.props.match.params.id;
-
-        if (id) {
-            const selectedMovie = this.getSelectedMovie(newMovies, id);
-            this.setState({
-                loading: false,
-                movies: [...newMovies],
-                selectedMovie
-            })
-        } else {
-            const selectedMovie = newMovies[0];
-            this.setState({
-                loading: false,
-                movies: [...newMovies],
-                selectedMovie
-            })
-            this.props.history.push({
-                pathname: `/player/${selectedMovie.id}`
-            })
-        }
+        }, 3000);
+        
     }
 
     componentDidUpdate(prevProps) {

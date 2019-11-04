@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom';
 
 import { HeaderImg, Searchbar, PosterList, LoadButton } from '../components';
 import { getMovies } from '../actions/movie';
@@ -48,6 +49,6 @@ const mapDispatchToProps = dispatch => {
     }
 }
 
-const Home = connect(mapStateToProps, mapDispatchToProps)(HomeComponent);
+const Home = connect(mapStateToProps, mapDispatchToProps)(withRouter(HomeComponent));
 
 export { Home };
