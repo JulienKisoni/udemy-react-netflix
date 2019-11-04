@@ -3,9 +3,10 @@ import axios from 'axios';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import { Provider } from 'react-redux';
 
-import { Home, Details, NotFound, MoviePlayer } from './routes';
+import { Home, Details, NotFound, MoviePlayer, Login } from './routes';
 import { Header, Spinner } from './components';
 import { API_URL, API_KEY, IMAGE_BASE_URL, BACKDROP_SIZE } from './config';
+import { initFirebase } from './utils/firebase-config';
 import store from './store';
 
 import './App.css';
@@ -24,6 +25,7 @@ class App extends Component {
   }
   async componentDidMount() {
     try {
+      initFirebase();
       const { data : { results, page, total_pages }} = await this.loadMovies();
       console.log('res', results);
       this.setState({
@@ -112,6 +114,7 @@ class App extends Component {
                 />
                 <Route path="/player" exact component={MoviePlayer} />
                 <Route path="/player/:id" exact component={MoviePlayer} />
+                <Route path="/login" exact component={Login} />
                 <Route path='/:id' exact component={Details} />
                 <Route component={NotFound} />
               </Switch>
