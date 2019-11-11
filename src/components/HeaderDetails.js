@@ -34,7 +34,7 @@ class HeaderDetails extends Component {
                     <h3 className="headerDetails--container__title">{this.props.mTitle}</h3>
                     <p className="headerDetails--container__desc">{this.props.mDesc}</p>
                     <div className="headerDetails--info">
-                        <Container iconName="clock" content={calcTime(this.props.runtime)} />
+                        <Container iconName="hourglass-half" content={calcTime(this.props.runtime)} />
                         <Stars fakeArray1={this.fakeArray1} fakeArray2={this.fakeArray2} />
                         <Container iconName="money" content={convertMoney(this.props.revenue)} />
                     </div>

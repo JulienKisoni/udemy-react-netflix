@@ -8,7 +8,7 @@ import '../css/ActorList.css';
 const ActorList = props => {
     const renderActor = () => {
         return props.actors.map((actor, i) => {
-            const imgSrc = `${IMAGE_BASE_URL}/${POSTER_SIZE}/${actor.profile_path}`;
+            const imgSrc = actor.profile_path ? `${IMAGE_BASE_URL}/${POSTER_SIZE}/${actor.profile_path}` : './images/no_image.jpg';
             return (
                 <Actor 
                     key={i}
