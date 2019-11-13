@@ -4,8 +4,8 @@ import firebase from 'firebase';
 import { Paypal } from '../components';
 
 const client = {
-    sandbox: "AbESjUQQ4fND6sPiZ12C-bgzSOTjW6sWXOZ-rA6thgNL1phvPHQTHSAZi9-DfLnsujjHkR74IV_LK0-3",
-    production: "fxxxxx"
+    sandbox: "xxxxxxxxxxxxxxxxxxxx", // votre id du sandbox paypal
+    production: "xxxxxx" // id Paypal en mode production 
 }
 
 const env = process.env.NODE_ENV === "production" ? "production" : "sandbox";
